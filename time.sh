@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "ID1,MiX,ID2,MAX,AVG" > /root/temp.txt
+echo "ID1,MiX,ID2,MAX,AVG" > /root/temp.csv
 
 while true
 do
