@@ -1,0 +1,34 @@
+#!/bin/sh
+
+udpath=/dev/disk/by-path/pci*usb*part1
+
+if [ -e $udpath ];then
+ :
+else
+ udpath=/dev/disk/by-path/pci*usb*
+fi
+
+if [ -e $udpath ]; then
+ echo 'udisk-ip-changer: udisk exists: '$udpath > /dev/ttyprintk
+ mkdir -p /tmp/miaomiao
+ mount $udpath /tmp/miaomiao
+ if [ $? = 0 ];then
+  echo 'udisk-ip-changer: mount succeed' > /dev/ttyprintk
+ else
+  echo 'udisk-ip-changer: error: failed to mount partition 1' > /dev/ttyprintk
+  exit 2
+ fi
+ if [ -e /tmp/miaomiao/interfaces ];then
+  echo 'udisk-ip-changer: found interfaces file, copying' > /dev/ttyprintk
+  cat /tmp/miaomiao/interfaces |busybox dos2unix > /etc/network/interfaces
+  sync
+  echo 'udisk-ip-changer: reconfiguring interfaces' > /dev/ttyprintk
+  ifdown --force -a
+  ifup --force -a
+ fi
+ echo 'udisk-ip-changer: umounting' > /dev/ttyprintk
+ umount /tmp/miaomiao
+ exit 0
+fi
+
+echo 'udisk-ip-changer: udisk not found' > /dev/ttyprintk
