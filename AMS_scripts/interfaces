@@ -1,0 +1,16 @@
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto ens3
+iface ens3 inet static
+        address 192.168.42.156
+        netmask 255.255.255.0
+        gateway 192.164.42.1
+
+auto enp0s25
+iface enp0s25 inet static
+        address 192.168.42.156
+        netmask 255.255.255.0
+        geteway 192.168.42.1
