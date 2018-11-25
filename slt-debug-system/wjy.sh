@@ -1,10 +1,10 @@
 #!/bin/bash
-echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' > 600.csv
+echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' >> 600.csv
 cat ./fzx.csv | awk -F "," '{if (substr($1,13,3) == "600") print $0}'  >> 600.csv
-echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' > 625.csv
+echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' >> 625.csv
 cat ./fzx.csv | awk -F "," '{if (substr($1,13,3) == "625") print $0}'  >> 625.csv
-echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' > 650.csv
-cat ./fzx.csv | awk -F "," '{if (substr($1,13,3) == "650") print $0}'  > 650.csv
+echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' >> 650.csv
+cat ./fzx.csv | awk -F "," '{if (substr($1,13,3) == "650") print $0}'  >> 650.csv
 echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' > 675.csv
 cat ./fzx.csv | awk -F "," '{if (substr($1,13,3) == "675") print $0}'  > 675.csv
 echo '"Freq","Voltage","GHSmm","Temp","TMax","WU","GHSav","DH","Iout","Vo","Power","Power/GHSav","Options"' > 700.csv
